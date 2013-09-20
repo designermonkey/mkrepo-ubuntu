@@ -112,7 +112,7 @@ create_repository() {
 
 add_hook() {
     WORKTREE="${SITES}/${VIRTUALHOST}"
-    cat ${TEMPLATE}| sed "s@WORKTREE@${WORKTREE}@g" | sed "s@USERNAME@${USERNAME}@g" sed "s@GROUPNAME@${GROUPNAME}@g" > ${REPOS}/${REPOSITORY}.git/hooks/post-receive
+    cat ${TEMPLATE} | sed "s@WORKTREE@${WORKTREE}@g" | sed "s@USERNAME@${USERNAME}@g" sed "s@GROUPNAME@${GROUPNAME}@g" > ${REPOS}/${REPOSITORY}.git/hooks/post-receive
     sudo chmod a+x ${REPOS}/${REPOSITORY}.git/hooks/post-receive
 }
 
