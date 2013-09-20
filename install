@@ -1,0 +1,28 @@
+#! /usr/bin/env bash
+
+readonly ERROR_SUDO=2
+
+if [[ $(whoami) != "root" ]]; then
+    runsudo;
+fi
+
+runsudo() {
+    echo "mkvhost needs root access. Please run as sudo";
+    exit $ERROR_SUDO
+}
+
+main() {
+    mkdir -p /data/git
+    ln -s $(pwd)/template.hook /data/git/template.hook
+    ln -s $(pwd)/mkrepo /usr/local/bin/mkrepo
+
+    chmod a+x $(pwd)/mkrepo
+}
+
+echo "Installing mkrepo."
+
+main
+
+echo "Installed links at:"
+echo "/usr/local/bin/mkrepo"
+echo "/data/git/template.hook"
